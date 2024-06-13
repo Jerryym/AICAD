@@ -10,9 +10,10 @@ AICAD是一个基于通用大语言模型和AutoCAD平台开发的应用程序�
 
 ## Getting Started
 
-1. 下载[ObjectArx2022](https://download.autodesk.com/esd/objectarx/2022/objectarx_for_autocad_2022_win_64bit_dlm.sfx.exe)，并安装至 `vendor`文件夹中。
-2. 在Visual Studio中打开 `AICAD.sln`，并编译项目。
-3. 在AutoCAD2021或AutoCAD2022中，加载 `AIAssistant.arx`。
+1. 在项目文件夹下新建名为 `vendor`的文件夹。
+2. 下载[ObjectArx2022](https://download.autodesk.com/esd/objectarx/2022/objectarx_for_autocad_2022_win_64bit_dlm.sfx.exe)，并安装至 `vendor`文件夹中。
+3. 在Visual Studio中打开 `AICAD.sln`，并编译项目。
+4. 在AutoCAD2021或AutoCAD2022中，加载 `AIAssistant.arx`。
 
 ## Dependencies
 

@@ -21,7 +21,7 @@
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Commands\HelloWorld.cpp">
+    <ClCompile Include="src\Commands\AICAD_Command.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

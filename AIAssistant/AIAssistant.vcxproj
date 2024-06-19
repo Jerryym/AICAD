@@ -92,7 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Commands\HelloWorld.cpp" />
+    <ClCompile Include="src\Commands\AICAD_Command.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

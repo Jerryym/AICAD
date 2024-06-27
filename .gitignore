@@ -7,3 +7,7 @@ vendor/
 
 # Files
 *.user
+/LLMInt/env
+/LLMInt/__pycache__
+/CppProperties.json
+/UpgradeLog.htm

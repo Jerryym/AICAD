@@ -25,7 +25,7 @@ os.environ['https_proxy'] = 'http://127.0.0.1:58591'
 os.environ['all_proxy'] = 'http://127.0.0.1:51837'
 
 # 设置 API 密钥
-genai.configure(api_key='AIzaSyCgYEjXDnrP9W-ZyR7wS8IwkNJ6YXzJoaU')
+genai.configure(api_key='your_api_key')
 
 # 设置希望 Gemini 调用的函数，包括加法、减法、乘法和除法。如果要使用请在genai.GenerativeModal()里面添加tools=tools_used
 #tools_used = [Math_Basic.add, Math_Basic.subtract, Math_Basic.multiply, Math_Basic.divide]

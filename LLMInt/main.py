@@ -20,9 +20,9 @@ from PyQt5.QtWidgets import QApplication
 # ---------------------------------------------------------------------------------------------------------------------
 
 # 设置代理端口号，我不设置这个会报错
-os.environ['http_proxy'] = 'http://127.0.0.1:58591'
-os.environ['https_proxy'] = 'http://127.0.0.1:58591'
-os.environ['all_proxy'] = 'http://127.0.0.1:51837'
+os.environ['http_proxy'] = 'http://127.0.0.1:80'
+os.environ['https_proxy'] = 'http://127.0.0.1:80'
+os.environ['all_proxy'] = 'http://127.0.0.1:80'
 
 # 设置 API 密钥
 genai.configure(api_key='your_api_key')

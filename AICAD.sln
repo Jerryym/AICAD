@@ -5,8 +5,6 @@ VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIAssistant", "AIAssistant\AIAssistant.vcxproj", "{A6F06288-71E8-456A-A677-82D05CE9ED0F}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "LLMInt", "LLMInt\LLMInt.pyproj", "{D7AE0A87-2FEF-4D13-B809-DC899980765E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{A6F06288-71E8-456A-A677-82D05CE9ED0F}.Release|Any CPU.Build.0 = Release|x64
 		{A6F06288-71E8-456A-A677-82D05CE9ED0F}.Release|x64.ActiveCfg = Release|x64
 		{A6F06288-71E8-456A-A677-82D05CE9ED0F}.Release|x64.Build.0 = Release|x64
-		{D7AE0A87-2FEF-4D13-B809-DC899980765E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7AE0A87-2FEF-4D13-B809-DC899980765E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D7AE0A87-2FEF-4D13-B809-DC899980765E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D7AE0A87-2FEF-4D13-B809-DC899980765E}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,14 +1,12 @@
 #include "StdAfx.h"
 #include "AICAD_Command.h"
 
-#define pi 3.14159265
+#include "Widgets/Dialog_Login.h"
+#include "Widgets/MainPaletteSet.h"
+
+#define PI 3.14159265
 
 namespace AICAD {
-
-	void HelloWorld()
-	{
-		acutPrintf(_T("Hello World\n"));
-	}
 
 	CmdDrawPolyline::CmdDrawPolyline()
 	{
@@ -394,7 +392,7 @@ namespace AICAD {
 			return false;
 		}
 
-		AcDbArc* pArc = new AcDbArc(pCenter, radius, startAngle * pi / 180, endAngle * pi / 180);
+		AcDbArc* pArc = new AcDbArc(pCenter, radius, startAngle * PI / 180, endAngle * PI / 180);
 
 		AcDbBlockTable* pBlockTable;
 		acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
@@ -448,7 +446,7 @@ namespace AICAD {
 			return;
 		}
 
-		AcDbArc* pArc = new AcDbArc(pCenter, radius, startAngle * pi / 180, endAngle * pi / 180);
+		AcDbArc* pArc = new AcDbArc(pCenter, radius, startAngle * PI / 180, endAngle * PI / 180);
 
 		AcDbBlockTable* pBlockTable;
 		acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForRead);
@@ -1106,5 +1104,31 @@ namespace AICAD {
 	{
 		CmdSelectEntity cmd;
 		cmd.execute();
+	}
+
+	void CmdStartPanel()
+	{
+		//打开AI聊天对话框
+		CMDIFrameWnd* pAcadFrm = acedGetAcadFrame();
+		if (G_pMainPane != NULL && G_pMainPane->IsWindowVisible() == TRUE)
+		{
+			G_pMainPane->close();
+		}
+		else
+		{
+			// 清理无效指针
+			SAFE_DELETE(G_pMainPane);
+			G_pMainPane = new MainPaletteSet;
+			CAcModuleResourceOverride AcResources;
+			if (G_pMainPane->Create(pAcadFrm) != TRUE)
+			{
+				AfxMessageBox(_T("Failed to open AICAD window!"));
+				return;
+			}
+			G_pMainPane->EnableDocking(CBRS_ALIGN_LEFT | CBRS_ALIGN_RIGHT);
+			G_pMainPane->RestoreControlBar();
+			pAcadFrm->ShowControlBar(G_pMainPane, TRUE, FALSE);
+		}
+		return;
 	}
 }

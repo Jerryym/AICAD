@@ -54,6 +54,8 @@
     <OutDir>$(SolutionDir)bin\Release-windows-x86_64\</OutDir>
     <IntDir>$(SolutionDir)bin-int\Release-windows-x86_64\AIAssistant\</IntDir>
     <TargetExt>.arx</TargetExt>
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -61,9 +63,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;..\vendor\ObjectARX2022\inc;..\vendor\ObjectARX2022\inc-x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;res;..\vendor\ObjectARX2022\inc;..\vendor\ObjectARX2022\inc-x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -77,21 +80,26 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN64;NDEBUG;_WINDOWS;_AFXEXT;_ACRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;..\vendor\ObjectARX2022\inc;..\vendor\ObjectARX2022\inc-x64;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;res;..\vendor\ObjectARX2022\inc;..\vendor\ObjectARX2022\inc-x64</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\vendor\ObjectARX2022\lib-x64;</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\vendor\ObjectARX2022\lib-x64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Widgets\Dialog_AIChat.cpp" />
+    <ClCompile Include="src\Widgets\ChatPalette.cpp" />
+    <ClCompile Include="src\Widgets\MainPaletteSet.cpp" />
+    <ClCompile Include="src\Widgets\Dialog_Login.cpp" />
     <ClCompile Include="src\Commands\AICAD_Command.cpp" />
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\StdAfx.cpp">
@@ -101,9 +109,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Widgets\Dialog_AIChat.h" />
+    <ClInclude Include="src\AICAD.h" />
+    <ClInclude Include="src\Widgets\ChatPalette.h" />
+    <ClInclude Include="src\Widgets\MainPaletteSet.h" />
+    <ClInclude Include="src\Widgets\Dialog_Login.h" />
+    <ClInclude Include="res\resource.h" />
     <ClInclude Include="src\Commands\AICAD_Command.h" />
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\AIAssistant.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

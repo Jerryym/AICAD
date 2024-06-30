@@ -23,21 +23,25 @@
 #include <afxole.h>
 #include <afxdisp.h>        // MFC OLE automation classes
 #include <afxtempl.h>
+#include <afxdlgs.h>
+
+#ifndef _AFX_NO_AFXCMN_SUPPORT
+	#include <afxcmn.h>			// MFC support for Windows Common Controls
+#endif // _AFX_NO_AFXCMN_SUPPORT
 //-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
 //- Include ObjectDBX/ObjectARX headers
-//- Uncomment one of the following lines to bring a given library in your project.
-//#define _BREP_SUPPORT_			//- Support for the BRep API
-//#define _HLR_SUPPORT_				//- Support for the Hidden Line Removal API
-//#define _AMODELER_SUPPORT_		//- Support for the AModeler API
-//#define _ASE_SUPPORT_				//- Support for the ASI/ASE API
-//#define _RENDER_SUPPORT_			//- Support for the AutoCAD Render API
-//#define _ARX_CUSTOM_DRAG_N_DROP_	//- Support for the ObjectARX Drag'n Drop API
-//#define _INC_LEAGACY_HEADERS_		//- Include legacy headers in this project
 #include <arxHeaders.h>
+#include <ads.h>
+#include <rxmfcapi.h>
 #include <AcExtensionModule.h>
+#include <adui.h>
+#include <acui.h>
 //-----------------------------------------------------------------------------
+
+#include "resource.h"
+#include <AICAD.h>
 
 //代替项目属性->连接器->输入->模块定义文件：[..\..\ObjectArx\ObjectArx2010\inc\AcRxDefault.def] [..\..\ObjectArx\ObjectArx2013\inc\AcRxDefault.def]
 #pragma comment(linker, "/export:acrxEntryPoint,PRIVATE")

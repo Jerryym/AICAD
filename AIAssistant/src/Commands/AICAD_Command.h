@@ -10,13 +10,9 @@
 此代码对AutoCAD进行了二次开发，编写了一些自定义命令以便一键生成图形。
 */
 
-/// @brief AICAD Command函数声明
 namespace AICAD {
 
 #define AICAD_COMMAND_Group _T("AICAD")
-
-	//测试命令
-	extern void HelloWorld();
 
 	typedef double ads_point[3];
 
@@ -26,6 +22,9 @@ namespace AICAD {
 	template<>
 	struct is_ads_point<ads_point> : std::true_type {};
 
+	void CmdStartPanel();
+
+	/// @brief 绘制多段线
 	class CmdDrawPolyline {
 	public:
 		CmdDrawPolyline();
@@ -38,6 +37,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 绘制直线
 	class CmdDrawline {
 	public:
 		CmdDrawline();
@@ -50,6 +50,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 绘制圆
 	class CmdDrawCircle {
 	public:
 		CmdDrawCircle();
@@ -62,6 +63,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 绘制圆弧
 	class CmdDrawArc {
 	public:
 		CmdDrawArc();
@@ -74,6 +76,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 绘制椭圆
 	class CmdDrawEllipse {
 	public:
 		CmdDrawEllipse();
@@ -86,6 +89,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 绘制文件
 	class CmdCreateText {
 	public:
 		CmdCreateText();
@@ -98,6 +102,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 创建图层
 	class CmdCreateLayer {
 	public:
 		CmdCreateLayer();
@@ -110,6 +115,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 创建标注
 	class CmdCreateDimension {
 	public:
 		CmdCreateDimension();
@@ -122,6 +128,7 @@ namespace AICAD {
 		static void command();
 	};
 
+	/// @brief 选择实体
 	class CmdSelectEntity {
 	public:
 		CmdSelectEntity();

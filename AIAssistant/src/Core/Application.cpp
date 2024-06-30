@@ -2,6 +2,7 @@
 #include "Application.h"
 
 #include "Commands/AICAD_Command.h"
+#include "Widgets/MainPaletteSet.h"
 
 #if _MSC_VER >= 1920
 #pragma comment(lib, "AcPal.lib")
@@ -26,11 +27,23 @@ namespace AICAD {
 	{
 		acedRegCmds->removeGroup(AICAD_COMMAND_Group);
 		acutPrintf(_T("\nAIAssistant unloaded."));
+
+		if (G_pMainPane)
+		{
+			if (G_pMainPane->m_hWnd != NULL && IsWindow(G_pMainPane->GetSafeHwnd()))
+			{
+				CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
+				pAcadFrame->RemoveControlBar(G_pMainPane);
+				pAcadFrame->RecalcLayout();
+				G_pMainPane->DestroyWindow();
+			}
+			SAFE_DELETE(G_pMainPane);
+		}
 	}
 	
 	void AIAssistant::LoadCmdGroup()
 	{
-		RegistCommand(AICAD_COMMAND_Group, _T("Test"), _T("Test"), ACRX_CMD_MODAL, AICAD::HelloWorld);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_StartPanel"), _T("EI_StartPanel"), ACRX_CMD_MODAL, AICAD::CmdStartPanel);
 		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawPolyline"), _T("EI_DrawPolyline"), ACRX_CMD_MODAL, AICAD::CmdDrawPolyline::command);
 		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawPolyline"), _T("EI_DrawPolyline"), ACRX_CMD_MODAL, AICAD::CmdDrawPolyline::command);
 		RegistCommand(AICAD_COMMAND_Group, _T("EI_Drawline"), _T("EI_Drawline"), ACRX_CMD_MODAL, AICAD::CmdDrawline::command);

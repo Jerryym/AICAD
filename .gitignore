@@ -2,7 +2,7 @@
 .vs/
 bin/
 bin-int/
-vendor/
+vendor/ObjectARX2022
 /*/x64
 
 # Files

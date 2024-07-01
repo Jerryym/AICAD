@@ -1108,27 +1108,11 @@ namespace AICAD {
 
 	void CmdStartPanel()
 	{
-		//打开AI聊天对话框
-		CMDIFrameWnd* pAcadFrm = acedGetAcadFrame();
-		if (G_pMainPane != NULL && G_pMainPane->IsWindowVisible() == TRUE)
+		CAcModuleResourceOverride resOverride;
+		Dialog_Login Dlg(CWnd::FromHandle(adsw_acadMainWnd()));
+		if (Dlg.DoModal() != IDOK)
 		{
-			G_pMainPane->close();
+			return;
 		}
-		else
-		{
-			// 清理无效指针
-			SAFE_DELETE(G_pMainPane);
-			G_pMainPane = new MainPaletteSet;
-			CAcModuleResourceOverride AcResources;
-			if (G_pMainPane->Create(pAcadFrm) != TRUE)
-			{
-				AfxMessageBox(_T("Failed to open AICAD window!"));
-				return;
-			}
-			G_pMainPane->EnableDocking(CBRS_ALIGN_LEFT | CBRS_ALIGN_RIGHT);
-			G_pMainPane->RestoreControlBar();
-			pAcadFrm->ShowControlBar(G_pMainPane, TRUE, FALSE);
-		}
-		return;
 	}
 }

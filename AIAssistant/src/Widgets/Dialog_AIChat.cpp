@@ -17,7 +17,7 @@ Dialog_AIChat::~Dialog_AIChat()
 void Dialog_AIChat::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_LIST_Record, m_ListRecord);
+	DDX_Control(pDX, IDC_RICHEDIT_Record, m_RichEdit_Record);
 	DDX_Control(pDX, IDC_EDIT_Msg, m_EditMsg);
 	DDX_Control(pDX, IDC_BUTTON_Send, m_Button_Send);
 }
@@ -58,21 +58,24 @@ void Dialog_AIChat::OnBnClickedButtonSend()
 
 	CString SRecord;
 	SRecord = L"You: " + SMsg;
-	m_ListRecord.AddString(SRecord);
 	m_EditMsg.SetWindowTextW(L"");
+
+	int nLength = m_RichEdit_Record.GetWindowTextLength();
+	m_RichEdit_Record.SetSel(nLength, -1);
+	m_RichEdit_Record.ReplaceSel(SRecord + "\n");
 }
 
 void Dialog_AIChat::OnSize(UINT nType, int cx, int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 
-	CRect rect, ListRecordRect, EditRect, ButtonRect;
+	CRect rect, RecordRect, EditRect, ButtonRect;
 	GetClientRect(&rect);
-	m_ListRecord.GetWindowRect(&ListRecordRect);
+	m_RichEdit_Record.GetWindowRect(&RecordRect);
 	m_EditMsg.GetWindowRect(&EditRect);
 	m_Button_Send.GetWindowRect(&ButtonRect);
 
-	m_ListRecord.SetWindowPos(this, 2, 2, rect.Width() - 5, ListRecordRect.Height(), SWP_NOZORDER);
-	m_EditMsg.SetWindowPos(this, 2, ListRecordRect.Height() + 5, rect.Width() - 5, EditRect.Height(), SWP_NOZORDER);
-	m_Button_Send.SetWindowPos(this, rect.Width() - ButtonRect.Width() - 5, ListRecordRect.Height() + EditRect.Height() + 5 , ButtonRect.Width(), ButtonRect.Height(), SWP_NOZORDER);
+	m_RichEdit_Record.SetWindowPos(this, 2, 2, rect.Width() - 5, RecordRect.Height(), SWP_NOZORDER);
+	m_EditMsg.SetWindowPos(this, 2, RecordRect.Height() + 5, rect.Width() - 5, EditRect.Height(), SWP_NOZORDER);
+	m_Button_Send.SetWindowPos(this, rect.Width() - ButtonRect.Width() - 5, RecordRect.Height() + EditRect.Height() + 5 , ButtonRect.Width(), ButtonRect.Height(), SWP_NOZORDER);
 }

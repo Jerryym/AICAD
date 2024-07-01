@@ -26,7 +26,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
-	CListBox m_ListRecord;
+	CRichEditCtrl m_RichEdit_Record;
 	CEdit m_EditMsg;
 	CButton m_Button_Send;
 };

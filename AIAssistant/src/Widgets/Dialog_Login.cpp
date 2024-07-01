@@ -60,6 +60,29 @@ void Dialog_Login::OnBnClickedOk()
 	//}
 	//关闭对话框
 	CDialog::OnOK();
+
+	//打开AI聊天对话框
+	CMDIFrameWnd* pAcadFrm = acedGetAcadFrame();
+	if (G_pMainPane != NULL && G_pMainPane->IsWindowVisible() == TRUE)
+	{
+		G_pMainPane->close();
+	}
+	else
+	{
+		// 清理无效指针
+		SAFE_DELETE(G_pMainPane);
+		G_pMainPane = new MainPaletteSet;
+		CAcModuleResourceOverride AcResources;
+		if (G_pMainPane->Create(pAcadFrm) != TRUE)
+		{
+			AfxMessageBox(_T("Failed to open AICAD window!"));
+			return;
+		}
+		G_pMainPane->EnableDocking(CBRS_ALIGN_LEFT | CBRS_ALIGN_RIGHT);
+		G_pMainPane->RestoreControlBar();
+		pAcadFrm->ShowControlBar(G_pMainPane, TRUE, FALSE);
+	}
+	return;
 }
 
 void Dialog_Login::OnBnClickedCancel()

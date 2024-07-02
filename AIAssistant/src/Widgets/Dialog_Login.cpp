@@ -6,7 +6,7 @@
 // Dialog_Login 对话框
 IMPLEMENT_DYNAMIC(Dialog_Login, CDialog)
 Dialog_Login::Dialog_Login(CWnd* pParent /*=nullptr*/)
-	: CDialog(IDD_DIALOG_Login, pParent), m_Combo_LLMName(L"Gemini-1.5-Flash"), m_SApiKey(_T(""))
+	: CDialog(IDD_DIALOG_Login, pParent), m_Combo_LLMName(L"gemini-1.5-flash"), m_SApiKey(_T(""))
 {
 }
 
@@ -38,8 +38,8 @@ void Dialog_Login::InitWgt()
 	{
 		return;
 	}
-	pComboxBox->AddString(L"Gemini-1.5-Flash");
-	pComboxBox->AddString(L"Gemini-1.5-Pro");
+	pComboxBox->AddString(L"gemini-1.5-flash");
+	pComboxBox->AddString(L"gemini-1.5-pro");
 	pComboxBox->SetCurSel(0);
 	m_SApiKey = L"";
 }
@@ -53,11 +53,13 @@ END_MESSAGE_MAP()
 // Dialog_Login 消息处理程序
 void Dialog_Login::OnBnClickedOk()
 {
+	UpdateData(TRUE);
 	//if (m_SApiKey.IsEmpty() == true)
 	//{
 	//	MessageBox(L"Api_Key is empty, please enter Api_Key", L"ALCAD", MB_ICONEXCLAMATION);
 	//	return;
 	//}
+	
 	//关闭对话框
 	CDialog::OnOK();
 

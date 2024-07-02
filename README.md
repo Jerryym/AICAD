@@ -19,3 +19,4 @@ AICAD是一个基于通用大语言模型和AutoCAD平台开发的应用程序�
 
 * MFC
 * ObjectArx
+* [pybind11](https://github.com/pybind/pybind11)

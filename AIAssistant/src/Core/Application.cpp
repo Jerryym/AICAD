@@ -18,7 +18,6 @@ namespace AICAD {
 	{
 		// Register the command group.
 		AIAssistant::LoadCmdGroup();
-
 		acutPrintf(_T("\nAIAssistant loaded."));
 		return TRUE;
 	}
@@ -40,7 +39,7 @@ namespace AICAD {
 			SAFE_DELETE(G_pMainPane);
 		}
 	}
-	
+
 	void AIAssistant::LoadCmdGroup()
 	{
 		RegistCommand(AICAD_COMMAND_Group, _T("EI_StartPanel"), _T("EI_StartPanel"), ACRX_CMD_MODAL, AICAD::CmdStartPanel);

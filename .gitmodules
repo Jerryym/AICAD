@@ -1,0 +1,3 @@
+[submodule "vendor/pybind11"]
+	path = vendor/pybind11
+	url = git@github.com:Jerryym/pybind11.git

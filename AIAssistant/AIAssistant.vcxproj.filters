@@ -21,7 +21,19 @@
     <ClCompile Include="src\Core\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Commands\HelloWorld.cpp">
+    <ClCompile Include="src\Commands\AICAD_Command.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Widgets\Dialog_Login.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Widgets\MainPaletteSet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Widgets\ChatPalette.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Widgets\Dialog_AIChat.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,5 +47,28 @@
     <ClInclude Include="src\Commands\AICAD_Command.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="res\resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Widgets\Dialog_Login.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Widgets\MainPaletteSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Widgets\ChatPalette.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AICAD.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Widgets\Dialog_AIChat.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\AIAssistant.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,12 @@
 #include "Application.h"
 
 #include "Commands/AICAD_Command.h"
+#include "Widgets/MainPaletteSet.h"
+
+#if _MSC_VER >= 1920
+#pragma comment(lib, "AcPal.lib")
+#pragma comment(lib, "acgeoment.lib")
+#endif
 
 HINSTANCE _hdllInstance;
 AC_IMPLEMENT_EXTENSION_MODULE(AIAssistant_DLL);
@@ -12,7 +18,6 @@ namespace AICAD {
 	{
 		// Register the command group.
 		AIAssistant::LoadCmdGroup();
-
 		acutPrintf(_T("\nAIAssistant loaded."));
 		return TRUE;
 	}
@@ -21,11 +26,33 @@ namespace AICAD {
 	{
 		acedRegCmds->removeGroup(AICAD_COMMAND_Group);
 		acutPrintf(_T("\nAIAssistant unloaded."));
+
+		if (G_pMainPane)
+		{
+			if (G_pMainPane->m_hWnd != NULL && IsWindow(G_pMainPane->GetSafeHwnd()))
+			{
+				CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
+				pAcadFrame->RemoveControlBar(G_pMainPane);
+				pAcadFrame->RecalcLayout();
+				G_pMainPane->DestroyWindow();
+			}
+			SAFE_DELETE(G_pMainPane);
+		}
 	}
-	
+
 	void AIAssistant::LoadCmdGroup()
 	{
-		RegistCommand(AICAD_COMMAND_Group, _T("Test"), _T("Test"), ACRX_CMD_MODAL, AICAD::HelloWorld);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_StartPanel"), _T("EI_StartPanel"), ACRX_CMD_MODAL, AICAD::CmdStartPanel);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawPolyline"), _T("EI_DrawPolyline"), ACRX_CMD_MODAL, AICAD::CmdDrawPolyline::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawPolyline"), _T("EI_DrawPolyline"), ACRX_CMD_MODAL, AICAD::CmdDrawPolyline::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_Drawline"), _T("EI_Drawline"), ACRX_CMD_MODAL, AICAD::CmdDrawline::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawCircle"), _T("EI_DrawCircle"), ACRX_CMD_MODAL, AICAD::CmdDrawCircle::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawArc"), _T("EI_DrawArc"), ACRX_CMD_MODAL, AICAD::CmdDrawArc::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_DrawEllipse"), _T("EI_DrawEllipse"), ACRX_CMD_MODAL, AICAD::CmdDrawEllipse::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_CreateText"), _T("EI_CreateText"), ACRX_CMD_MODAL, AICAD::CmdCreateText::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_CreateLayer"), _T("EI_CreateLayer"), ACRX_CMD_MODAL, AICAD::CmdCreateLayer::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_CreateDimension"), _T("EI_CreateDimension"), ACRX_CMD_MODAL, AICAD::CmdCreateDimension::command);
+		RegistCommand(AICAD_COMMAND_Group, _T("EI_SelectEntity"), _T("EI_SelectEntity"), ACRX_CMD_MODAL, AICAD::CmdSelectEntity::command);
 	}
 
 	void AIAssistant::RegistCommand(LPCTSTR cmdGroup, LPCTSTR cmdInt, LPCTSTR cmdLoc, const int cmdFlags, const AcRxFunctionPtr cmdProc, const int idLocal)
